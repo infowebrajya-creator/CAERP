@@ -14,6 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'role' => \App\Http\Middleware\EnsureRole::class,
+            'license' => \App\Http\Middleware\CheckLicenseStatus::class,
+        ]);
+        $middleware->web(append: [
+            \App\Http\Middleware\CheckLicenseStatus::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

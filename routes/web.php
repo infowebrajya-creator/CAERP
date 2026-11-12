@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\GstReturnController;
 use App\Http\Controllers\ItrFilingController;
+use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\Portal\ClientPortalController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
@@ -19,6 +20,12 @@ use App\Http\Controllers\TdsReturnController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('login'));
+
+// Licensing & Hardware Activation
+Route::get('/license/activate', [LicenseController::class, 'showActivation'])->name('license.activate');
+Route::post('/license/activate', [LicenseController::class, 'activate'])->name('license.submit');
+Route::post('/license/deactivate', [LicenseController::class, 'deactivate'])->middleware('auth')->name('license.deactivate');
+Route::get('/license/status', [LicenseController::class, 'status'])->name('license.status');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');

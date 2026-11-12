@@ -33,6 +33,41 @@
             <button type="submit" class="btn btn-sm btn-primary w-100">Save Firm Settings</button>
         </form>
 
+        <div class="ca-card p-3 mb-3">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <h2 class="h6 fw-bold mb-0">Software License &amp; Device Lock</h2>
+                @if($licenseInfo['is_activated'])
+                    <span class="badge bg-success-subtle text-success border border-success-subtle">Activated</span>
+                @else
+                    <span class="badge bg-danger-subtle text-danger border border-danger-subtle">Unregistered</span>
+                @endif
+            </div>
+            <div class="small">
+                <div class="mb-1"><span class="text-muted">Licensee:</span> <strong>{{ $licenseInfo['licensed_to'] ?? 'Evaluation Mode' }}</strong></div>
+                <div class="mb-1"><span class="text-muted">Edition:</span> <span class="badge bg-secondary-subtle text-secondary">{{ $licenseInfo['edition'] }}</span></div>
+                <div class="mb-1"><span class="text-muted">Machine ID:</span> <code class="text-dark">{{ $licenseInfo['machine_fingerprint'] }}</code></div>
+                <div class="mb-1"><span class="text-muted">License Key:</span> <code class="text-muted">{{ $licenseInfo['license_key'] ?? 'None' }}</code></div>
+                <div class="mb-2">
+                    <span class="text-muted">AMC / Updates:</span>
+                    <strong class="{{ $licenseInfo['amc_status'] === 'expired' ? 'text-danger' : 'text-success' }}">
+                        {{ $licenseInfo['amc_expires_at'] ?? 'Lifetime' }}
+                        @if($licenseInfo['remaining_amc_days'] > 0)
+                            ({{ $licenseInfo['remaining_amc_days'] }} days remaining)
+                        @endif
+                    </strong>
+                </div>
+            </div>
+            <div class="d-flex gap-2 mt-3 pt-2 border-top">
+                <a href="{{ route('license.activate') }}" class="btn btn-xs btn-outline-primary">Manage License</a>
+                @if($licenseInfo['is_activated'])
+                    <form action="{{ route('license.deactivate') }}" method="POST" onsubmit="return confirm('Deactivate license on this machine to transfer to another PC?');" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-xs btn-outline-danger">Transfer License</button>
+                    </form>
+                @endif
+            </div>
+        </div>
+
         <div class="ca-card p-3">
             <h2 class="h6 fw-bold mb-2">WhatsApp Business API Integration Status</h2>
             <p class="small text-muted mb-2">Configure <code>WHATSAPP_ENABLED=true</code>, <code>WHATSAPP_PHONE_NUMBER_ID</code>, and <code>WHATSAPP_ACCESS_TOKEN</code> in <code>.env</code> to enable live Cloud API delivery.</p>

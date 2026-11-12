@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ActivityLog;
 use App\Models\FirmSetting;
 use App\Services\ActivityLogger;
+use App\Services\LicenseService;
 use App\Services\WhatsApp\WhatsAppProviderInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class SettingController extends Controller
 {
     public function __construct(
         private readonly ActivityLogger $logger,
-        private readonly WhatsAppProviderInterface $whatsApp
+        private readonly WhatsAppProviderInterface $whatsApp,
+        private readonly LicenseService $licenseService
     ) {}
 
     public function index(Request $request): View
@@ -24,8 +26,9 @@ class SettingController extends Controller
         $settings = FirmSetting::allAsMap();
         $logs = ActivityLog::with('user')->latest()->paginate(20);
         $whatsAppConfigured = $this->whatsApp->isConfigured();
+        $licenseInfo = $this->licenseService->getLicenseInfo();
 
-        return view('settings.index', compact('settings', 'logs', 'whatsAppConfigured'));
+        return view('settings.index', compact('settings', 'logs', 'whatsAppConfigured', 'licenseInfo'));
     }
 
     public function update(Request $request): RedirectResponse
