@@ -1,0 +1,330 @@
+# Project: CA Practice Management System
+
+Build a complete, modern, responsive **Chartered Accountant (CA) Firm Practice Management Software** using Laravel, MySQL, PHP, Blade, JavaScript and Bootstrap 5.
+
+The software should help CA firms manage clients, GST filing, ITR filing, TDS, audit assignments, compliance deadlines, document collection, employee tasks, billing and client communication from one central dashboard.
+
+The application must be fully functional, not just a UI prototype. All modules should have working CRUD operations, database relationships, validation, search, filters and reporting.
+
+## 1. Design & Branding
+
+Create a premium, minimalist and professional accounting software interface.
+
+**Design direction:**
+- Use a LIGHT THEME throughout the application.
+- White and off-white backgrounds.
+- Light blue, soft navy, muted teal and subtle sky-blue accents.
+- Avoid dark backgrounds and overly saturated colours.
+- Use a light CA-inspired colour palette.
+- Clean typography with excellent readability.
+- Rounded cards with subtle borders and shadows.
+- Modern tables, charts and status indicators.
+- Professional sidebar navigation.
+- Responsive design for desktop, tablets and mobile.
+
+**Logo:**
+- Create a minimalist CA-inspired logo.
+- Use a professional abstract combination of a document, financial growth and checkmark symbol.
+- Keep the logo light, elegant and suitable for a Chartered Accountant firm.
+- Do not use the official ICAI logo or imply ICAI endorsement.
+- Display the logo in the sidebar and login screen.
+
+## 2. User Roles & Permissions
+
+Implement role-based access control.
+
+1. Super Admin – Complete system access.
+2. CA / Partner – Manage clients, compliance, audits, staff and reports.
+3. Manager – Manage assigned clients and employee tasks.
+4. Accountant / Employee – Access assigned work and clients.
+5. Client – Limited portal access to upload documents, view requests, check filing status and download shared documents.
+
+## 3. Dashboard
+
+Create an attractive dashboard showing:
+
+- Total active clients.
+- Total GST clients.
+- Total ITR clients.
+- Pending GST returns.
+- Pending ITR filings.
+- Pending TDS returns.
+- Upcoming compliance deadlines.
+- Overdue tasks.
+- Documents awaiting client submission.
+- Outstanding professional fees.
+- Monthly revenue.
+- Employee task completion statistics.
+
+Include charts for:
+- Monthly revenue.
+- Compliance completion.
+- Client growth.
+- Workload by employee.
+
+Add a recent activities section and an upcoming deadlines calendar.
+
+## 4. Client Management CRM
+
+Build a complete client management module.
+
+Features:
+- Add, edit, view and delete clients.
+- Individual and business client categories.
+- Client name, email, mobile number and address.
+- PAN, GSTIN, TAN and CIN fields where applicable.
+- Business type and industry.
+- Assigned CA / relationship manager.
+- Client registration date.
+- Client status: Active, Inactive, Onboarding.
+- Client notes and communication history.
+- Client-specific document storage.
+- Client-wise compliance history.
+- Client-wise outstanding payments.
+
+Each client should have a detailed profile with separate tabs for Overview, Compliance, Documents, Tasks, Invoices and Communication.
+
+## 5. GST Compliance Management
+
+Build a GST compliance tracking module.
+
+Features:
+- GST client listing.
+- GSTIN and registration details.
+- Return type: GSTR-1, GSTR-3B, GSTR-9 and other configurable return types.
+- Financial year and tax period.
+- Filing due dates.
+- Filing status: Not Started, Documents Pending, In Progress, Filed, Overdue.
+- ARN and filing date fields.
+- Assigned employee.
+- Internal notes.
+- Client document checklist.
+- GST compliance calendar.
+- Filter by month, year, client and filing status.
+
+Do not implement actual GST portal filing or claim API integration unless credentials and an authorised integration are provided.
+
+## 6. Income Tax Return (ITR) Management
+
+Features:
+- Client-wise ITR tracking.
+- Assessment year and financial year.
+- ITR category and return type.
+- Assigned employee.
+- Document collection status.
+- Filing status.
+- Filing date and acknowledgement number.
+- Refund status tracking.
+- Pending document checklist.
+- Client-wise filing history.
+- Filters and reports.
+
+## 7. Deadline & Compliance Calendar
+
+Create a central calendar for all compliance activities.
+
+Features:
+- GST deadlines.
+- ITR deadlines.
+- TDS deadlines.
+- Advance tax deadlines.
+- ROC compliance deadlines.
+- Audit deadlines.
+- Custom reminders.
+
+Allow users to:
+- Add custom deadlines.
+- Assign deadlines to employees.
+- Link deadlines with clients.
+- Set reminder dates.
+- View overdue compliance.
+- Filter by compliance type.
+
+Use configurable due dates instead of hardcoding statutory deadlines.
+
+## 8. Client Document Management
+
+Build a secure document collection portal.
+
+Features:
+- Upload documents against individual clients.
+- Categorise documents: PAN, Aadhaar, Bank Statements, Invoices, GST Documents, TDS Certificates, Audit Documents and Other.
+- Document versioning.
+- Document approval/rejection.
+- Document request checklist.
+- Document status: Requested, Uploaded, Approved, Rejected.
+- Upload date and uploaded-by details.
+- Secure document downloads.
+- Client portal document upload.
+
+## 9. TDS Management
+
+Features:
+- Client-wise TDS tracking.
+- TDS deduction details.
+- Payment tracking.
+- Return filing tracking.
+- Quarterly return records.
+- Form 24Q, 26Q, 27Q and 27EQ categorisation.
+- Filing deadlines.
+- Challan details.
+- Employee assignment.
+- Pending and completed status.
+
+## 10. Audit Management
+
+Features:
+- Create audit assignments.
+- Link audits to clients.
+- Audit type and financial year.
+- Assign audit team members.
+- Audit checklist.
+- Working paper document uploads.
+- Audit observations and notes.
+- Review and approval workflow.
+- Audit progress tracking.
+- Completion status.
+
+## 11. Billing & Payment Management
+
+Features:
+- Generate professional invoices.
+- Invoice numbering.
+- Client details.
+- Service description.
+- Taxable amount.
+- GST calculation.
+- CGST, SGST and IGST support.
+- Discounts.
+- Total invoice amount.
+- Payment status: Paid, Partially Paid, Unpaid, Overdue.
+- Payment history.
+- Outstanding payment reports.
+- Downloadable PDF invoices.
+
+## 12. Employee & Staff Management
+
+Features:
+- Add and manage employees.
+- Employee profiles.
+- Role assignment.
+- Client assignment.
+- Task allocation.
+- Task priorities.
+- Task deadlines.
+- Task status.
+- Employee workload dashboard.
+- Performance reports.
+- Task review and approval.
+
+## 13. Task & Workflow Management
+
+Create a central task management system.
+
+Features:
+- Create tasks against clients.
+- Assign tasks to employees.
+- Task categories.
+- Priority levels: Low, Medium, High, Urgent.
+- Due dates.
+- Task descriptions.
+- Attachments.
+- Comments and internal notes.
+- Status: To Do, In Progress, Under Review, Completed.
+- Task activity history.
+- Kanban board and table view.
+
+## 14. Client Communication & Notifications
+
+Features:
+- Client communication history.
+- Document request notifications.
+- Compliance deadline reminders.
+- Payment reminders.
+- Task notifications.
+- Email notification support.
+- WhatsApp integration-ready architecture.
+
+Do not fake WhatsApp delivery. Implement an integration-ready service layer for an authorised WhatsApp Business API provider.
+
+## 15. Client Portal
+
+Create a separate client login area.
+
+Clients should be able to:
+- View their profile.
+- Upload requested documents.
+- View pending document requests.
+- Track GST and ITR filing status.
+- View upcoming compliance deadlines.
+- Download shared invoices and documents.
+- View outstanding payments.
+- Send messages to the CA firm.
+
+Clients must never access other clients' information.
+
+## 16. Reports & Analytics
+
+Create reports for:
+- Client-wise compliance.
+- GST filing status.
+- ITR filing status.
+- TDS filing status.
+- Overdue compliance.
+- Employee productivity.
+- Pending tasks.
+- Outstanding invoices.
+- Monthly revenue.
+- Document collection status.
+
+Include date filters and Excel/CSV export options.
+
+## 17. Technical Requirements
+
+Technology stack:
+- Backend: Laravel (latest stable version compatible with the deployment environment).
+- Database: MySQL.
+- Frontend: Blade templates.
+- CSS: Bootstrap 5.
+- JavaScript: Vanilla JS or lightweight libraries.
+- Charts: Chart.js.
+- Icons: Lucide or Bootstrap Icons.
+- PDF generation for invoices and reports.
+- Authentication with secure password hashing.
+- Role-based permissions.
+- Laravel validation.
+- CSRF protection.
+- Secure file storage.
+- Database migrations and seeders.
+
+Architecture:
+- Follow MVC architecture.
+- Use reusable Blade components.
+- Use service classes for business logic.
+- Use database transactions where necessary.
+- Use Eloquent relationships.
+- Use pagination on large datasets.
+- Add search and filters to all major listing pages.
+- Implement audit logs for important activities.
+- Use proper access control and tenant/client data isolation.
+
+## 18. Important Development Instructions
+
+1. First inspect the project directory and existing environment.
+2. Create the complete database schema and migrations.
+3. Build authentication and role-based access.
+4. Develop the dashboard and sidebar.
+5. Develop each module with functional CRUD operations.
+6. Implement database relationships.
+7. Implement client portal access.
+8. Add realistic demo data for testing.
+9. Test all forms, buttons, filters and workflows.
+10. Fix all errors before considering the application complete.
+
+Do not build a static dashboard with dummy buttons.
+
+Every navigation item must open a functional page. Every form must save data to MySQL. Every listing must display actual database records.
+
+Create a professional, polished, production-oriented CA Practice Management System that can be demonstrated to real Chartered Accountant firms.
+
+**Final objective:** A complete CA Firm ERP that allows a Chartered Accountant to manage clients, compliance, documents, employees, deadlines, audits and billing from one unified platform.

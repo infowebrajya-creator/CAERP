@@ -1,0 +1,17 @@
+{
+    "name": "WebRajya ERP",
+    "short_name": "WebRajya",
+    "description": "Comprehensive Practice Management Software for Accounting Professionals",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f8fafc",
+    "theme_color": "#1e3a5f",
+    "icons": [
+        {
+            "src": "/images/webrajya-logo.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        }
+    ]
+}
+

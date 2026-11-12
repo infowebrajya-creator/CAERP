@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /portal/
+Disallow: /billing/
+Disallow: /documents/
+Disallow: /settings/
+Allow: /
