@@ -15,3 +15,4 @@ docker exec webrajya_mysql mysqldump -uwebrajya -pwebrajya_secure_pass webrajya 
 echo ""
 echo "[SUCCESS] Backup complete: ${BACKUP_FILE}"
 echo "Keep a copy on a USB drive or cloud backup."
+

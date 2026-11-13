@@ -46,3 +46,4 @@ volumes:
     name: webrajya_db_data
   webrajya_storage:
     name: webrajya_storage
+

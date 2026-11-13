@@ -18,6 +18,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TdsReturnController;
+use App\Http\Controllers\UpdateController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('login'));
@@ -134,6 +135,10 @@ Route::middleware(['auth', 'role:super_admin,partner,manager,employee'])->group(
     Route::post('/backups/{filename}/restore', [BackupController::class, 'restore'])->name('backups.restore');
     Route::post('/backups/upload', [BackupController::class, 'upload'])->name('backups.upload');
     Route::delete('/backups/{filename}', [BackupController::class, 'destroy'])->name('backups.destroy');
+
+    // Software Updates & Releases (Super Admin / Partner)
+    Route::post('/updates/check', [UpdateController::class, 'check'])->name('updates.check');
+    Route::post('/updates/apply-patch', [UpdateController::class, 'applyPatch'])->name('updates.apply_patch');
 });
 
 // Isolated Client Portal

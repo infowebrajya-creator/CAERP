@@ -62,3 +62,4 @@ echo To stop WebRajya later, run: stop.bat
 echo To start again later, run: start.bat
 echo.
 pause
+

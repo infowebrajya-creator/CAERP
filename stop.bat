@@ -6,3 +6,4 @@ docker compose stop
 echo.
 echo Containers stopped. Your data is safely stored in local volumes.
 pause
+

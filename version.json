@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "name": "WebRajya ERP",
+  "release_date": "2026-11-13",
+  "channel": "stable",
+  "changelog": [
+    "Unified CA practice management (Clients, GST, ITR, TDS, Audits, Billing)",
+    "Hardware-locked cryptographic licensing and offline validation",
+    "One-click Docker distribution for Windows & Mac deployment",
+    "Integrated database backup, snapshot management, and disaster recovery"
+  ],
+  "min_php_version": "8.3",
+  "download_url": "https://github.com/infowebrajya-creator/CAERP/releases/latest"
+}

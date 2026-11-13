@@ -50,3 +50,4 @@ fi
 
 echo "To stop later: docker compose down"
 echo "To restart later: docker compose up -d"
+
