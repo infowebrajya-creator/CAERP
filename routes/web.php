@@ -19,6 +19,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TdsReturnController;
 use App\Http\Controllers\UpdateController;
+use App\Http\Controllers\VendorLicenseController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('login'));
@@ -140,6 +141,15 @@ Route::middleware(['auth', 'role:super_admin,partner,manager,employee'])->group(
     // Software Updates & Releases (Super Admin / Partner)
     Route::post('/updates/check', [UpdateController::class, 'check'])->name('updates.check');
     Route::post('/updates/apply-patch', [UpdateController::class, 'applyPatch'])->name('updates.apply_patch');
+});
+
+// Super Admin / Vendor License Manager
+Route::middleware(['auth', 'role:super_admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/licenses', [VendorLicenseController::class, 'index'])->name('licenses.index');
+    Route::post('/licenses', [VendorLicenseController::class, 'store'])->name('licenses.store');
+    Route::post('/licenses/{license}/renew-amc', [VendorLicenseController::class, 'renewAmc'])->name('licenses.renew_amc');
+    Route::get('/licenses/export-csv', [VendorLicenseController::class, 'exportCsv'])->name('licenses.export_csv');
+    Route::delete('/licenses/{license}', [VendorLicenseController::class, 'destroy'])->name('licenses.destroy');
 });
 
 // Isolated Client Portal

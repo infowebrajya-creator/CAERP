@@ -65,4 +65,30 @@ class SystemLicense extends Model
 
         return max(0, (int) now()->diffInDays($this->amc_expires_at, false));
     }
+
+    /**
+     * Scope query to search by term.
+     */
+    public function scopeSearch($query, ?string $term)
+    {
+        if (empty($term)) {
+            return $query;
+        }
+
+        return $query->where(function ($q) use ($term) {
+            $q->where('licensed_to', 'like', "%{$term}%")
+              ->orWhere('email', 'like', "%{$term}%")
+              ->orWhere('phone', 'like', "%{$term}%")
+              ->orWhere('machine_fingerprint', 'like', "%{$term}%")
+              ->orWhere('license_key', 'like', "%{$term}%");
+        });
+    }
+
+    /**
+     * Get sale price or default ₹45,000.
+     */
+    public function getSalePrice(): float
+    {
+        return (float) ($this->meta_data['sale_price'] ?? 45000.00);
+    }
 }

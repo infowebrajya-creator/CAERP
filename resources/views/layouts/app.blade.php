@@ -46,6 +46,9 @@
     if ($user && $user->isAdminOrPartner()) {
         $navItems['Insights & Admin'][] = ['route' => 'settings.index', 'pattern' => 'settings.*', 'icon' => 'bi-sliders', 'label' => 'Settings & Audit Logs'];
     }
+    if ($user && $user->role === 'super_admin') {
+        $navItems['Insights & Admin'][] = ['route' => 'admin.licenses.index', 'pattern' => 'admin.licenses.*', 'icon' => 'bi-key-fill', 'label' => 'Vendor License Manager'];
+    }
 @endphp
 
 <div class="ca-shell">
