@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\BackupController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CommunicationController;
@@ -126,6 +127,13 @@ Route::middleware(['auth', 'role:super_admin,partner,manager,employee'])->group(
     // Firm Settings & Audit Logs (Super Admin / Partner)
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');
+
+    // System Backups & Disaster Recovery (Super Admin / Partner)
+    Route::post('/backups', [BackupController::class, 'store'])->name('backups.store');
+    Route::get('/backups/{filename}/download', [BackupController::class, 'download'])->name('backups.download');
+    Route::post('/backups/{filename}/restore', [BackupController::class, 'restore'])->name('backups.restore');
+    Route::post('/backups/upload', [BackupController::class, 'upload'])->name('backups.upload');
+    Route::delete('/backups/{filename}', [BackupController::class, 'destroy'])->name('backups.destroy');
 });
 
 // Isolated Client Portal

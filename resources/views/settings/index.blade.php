@@ -80,6 +80,77 @@
     </div>
 
     <div class="col-lg-7">
+        <!-- Database Backups & Disaster Recovery -->
+        <div class="ca-card mb-3 p-3">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div>
+                    <h2 class="h6 fw-bold mb-0">Database Backups &amp; Disaster Recovery</h2>
+                    <p class="text-muted small mb-0">Create instant SQL backups, download them to secure external storage, or restore previous snapshots.</p>
+                </div>
+                <form action="{{ route('backups.store') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-sm btn-primary d-flex align-items-center gap-1">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                        <span>Create Backup</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Backups Table -->
+            <div class="table-responsive border rounded mb-3">
+                <table class="table table-sm table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="small">Backup File</th>
+                            <th class="small">Size</th>
+                            <th class="small">Date</th>
+                            <th class="small text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($backups as $b)
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <span class="badge bg-secondary-subtle text-secondary font-monospace" style="font-size: 0.65rem;">{{ $b['is_compressed'] ? 'GZIP' : 'SQL' }}</span>
+                                        <span class="small fw-medium font-monospace text-truncate" style="max-width: 220px;" title="{{ $b['filename'] }}">{{ $b['filename'] }}</span>
+                                    </div>
+                                </td>
+                                <td class="small text-muted">{{ $b['size'] }}</td>
+                                <td class="small text-nowrap">{{ $b['created_at']->format('d M Y, h:i A') }}</td>
+                                <td class="text-end text-nowrap">
+                                    <a href="{{ route('backups.download', $b['filename']) }}" class="btn btn-xs btn-outline-primary" title="Download backup to PC">Download</a>
+                                    <form action="{{ route('backups.restore', $b['filename']) }}" method="POST" class="d-inline" onsubmit="return confirm('WARNING: Restoring will overwrite the current database with this snapshot. Are you sure?');">
+                                        @csrf
+                                        <button type="submit" class="btn btn-xs btn-outline-warning" title="Restore this snapshot">Restore</button>
+                                    </form>
+                                    <form action="{{ route('backups.destroy', $b['filename']) }}" method="POST" class="d-inline" onsubmit="return confirm('Permanently delete this backup file?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-xs btn-outline-danger" title="Delete">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="text-center text-muted py-3 small">
+                                    No backups generated yet. Click <strong>Create Backup</strong> to save your first snapshot.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Upload External Backup -->
+            <form action="{{ route('backups.upload') }}" method="POST" enctype="multipart/form-data" class="d-flex align-items-center gap-2 pt-2 border-top">
+                @csrf
+                <label class="form-label small fw-semibold text-nowrap mb-0">Upload Backup (.sql/.gz):</label>
+                <input type="file" name="backup_file" accept=".sql,.gz" class="form-control form-control-sm" required>
+                <button type="submit" class="btn btn-sm btn-outline-secondary text-nowrap">Upload</button>
+            </form>
+        </div>
+
         <div class="ca-card overflow-hidden">
             <div class="p-3 border-bottom"><h2 class="h6 fw-bold mb-0">System Audit Trail</h2></div>
             <div class="table-responsive">
