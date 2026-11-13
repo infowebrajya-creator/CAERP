@@ -100,3 +100,4 @@ class UpdateSystemTest extends TestCase
         $this->assertFalse($result['can_install']);
     }
 }
+

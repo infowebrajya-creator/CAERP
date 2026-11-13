@@ -28,6 +28,7 @@ Route::get('/license/activate', [LicenseController::class, 'showActivation'])->n
 Route::post('/license/activate', [LicenseController::class, 'activate'])->name('license.submit');
 Route::post('/license/deactivate', [LicenseController::class, 'deactivate'])->middleware('auth')->name('license.deactivate');
 Route::get('/license/status', [LicenseController::class, 'status'])->name('license.status');
+Route::get('/license/eula', [LicenseController::class, 'showEula'])->name('license.eula');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');

@@ -139,6 +139,13 @@
                         </div>
                     </div>
 
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="agree_terms" required checked>
+                        <label class="form-check-label small text-muted" for="agree_terms">
+                            I accept the <a href="{{ route('license.eula') }}" target="_blank" class="text-decoration-none fw-medium">End User License Agreement (EULA)</a> and AMC terms.
+                        </label>
+                    </div>
+
                     <div class="d-grid mt-4">
                         <button type="submit" class="btn btn-primary btn-lg fw-semibold" style="background: linear-gradient(135deg, #1e3a5f 0%, #0d9488 100%); border: none;">
                             Activate WebRajya ERP

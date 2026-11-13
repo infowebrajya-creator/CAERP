@@ -24,3 +24,4 @@ return [
     // Require valid AMC for receiving updates
     'require_valid_amc' => true,
 ];
+

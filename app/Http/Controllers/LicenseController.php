@@ -59,6 +59,14 @@ class LicenseController extends Controller
     }
 
     /**
+     * Show the End User License Agreement (EULA).
+     */
+    public function showEula()
+    {
+        return view('license.eula');
+    }
+
+    /**
      * Return JSON status of current license.
      */
     public function status()

@@ -95,8 +95,9 @@
                     </strong>
                 </div>
             </div>
-            <div class="d-flex gap-2 mt-3 pt-2 border-top">
+            <div class="d-flex align-items-center gap-2 mt-3 pt-2 border-top">
                 <a href="{{ route('license.activate') }}" class="btn btn-xs btn-outline-primary">Manage License</a>
+                <a href="{{ route('license.eula') }}" target="_blank" class="btn btn-xs btn-outline-secondary">View EULA</a>
                 @if($licenseInfo['is_activated'])
                     <form action="{{ route('license.deactivate') }}" method="POST" onsubmit="return confirm('Deactivate license on this machine to transfer to another PC?');" class="d-inline">
                         @csrf

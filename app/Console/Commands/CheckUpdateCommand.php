@@ -44,3 +44,4 @@ class CheckUpdateCommand extends Command
         return self::SUCCESS;
     }
 }
+

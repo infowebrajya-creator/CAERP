@@ -133,4 +133,11 @@ class LicenseSystemTest extends TestCase
         $response->assertRedirect(route('dashboard'));
         $this->assertTrue($this->licenseService->isActivated());
     }
+
+    public function test_license_eula_page_is_accessible(): void
+    {
+        $response = $this->get(route('license.eula'));
+        $response->assertOk();
+        $response->assertSee('End User License Agreement');
+    }
 }
