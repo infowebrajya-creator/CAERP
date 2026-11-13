@@ -58,6 +58,14 @@ echo "=================================================="
 echo "   WebRajya ERP is LIVE at http://localhost:8000  "
 echo "=================================================="
 
-# Start PHP server
+# Start Laravel scheduler in background (runs backup:create daily at 2 AM, update:check at 3 AM)
+echo "Starting background task scheduler..."
+(while true; do php artisan schedule:run >> /var/www/html/storage/logs/scheduler.log 2>&1; sleep 60; done) &
+
+echo "=================================================="
+echo "   Scheduler active — auto-backup runs at 2:00 AM "
+echo "=================================================="
+
+# Start PHP server (foreground — keeps container alive)
 exec php artisan serve --host=0.0.0.0 --port=8000
 
